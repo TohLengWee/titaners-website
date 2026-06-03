@@ -243,6 +243,16 @@
     }
     .lang-toggle:hover { border-color: var(--blue); background: var(--blue-pale); color: var(--blue); }
 
+    /* TIMELINE (mobile process) */
+    .steps-mobile { display:none; }
+    .steps-desktop { display:grid; }
+    .timeline-item { display:flex; gap:16px; margin-bottom:28px; }
+    .timeline-left { display:flex; flex-direction:column; align-items:center; flex-shrink:0; }
+    .timeline-line { width:2px; flex:1; background:var(--border-blue); margin-top:8px; min-height:32px; }
+    .timeline-content { padding-bottom:8px; }
+    .timeline-content h3 { font-size:16px; font-weight:700; margin-bottom:6px; color:var(--text); }
+    .timeline-content p { font-size:14px; color:var(--text-sub); line-height:1.65; }
+
     /* RESPONSIVE — TABLET (≤900px) */
     @media (max-width: 900px) {
       nav { padding: 0 16px; gap: 10px; flex-wrap: wrap; height: auto; padding-top: 12px; padding-bottom: 12px; }
@@ -259,8 +269,8 @@
     }
 
     /* VALUES GRID */
-    .values-cards-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:16px; margin-top:24px; }
-    @media (max-width:900px) { .values-cards-grid { grid-template-columns:repeat(3,1fr); } }
+    .values-cards-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-top:24px; }
+    @media (max-width:900px) { .values-cards-grid { grid-template-columns:repeat(2,1fr); } }
     @media (max-width:600px) { .values-cards-grid { grid-template-columns:1fr 1fr; } }
 
     /* RESPONSIVE — MOBILE (≤600px) */
@@ -286,8 +296,9 @@
       /* Services / industries: 1 col */
       .services-grid, .industries-grid { grid-template-columns: 1fr; }
 
-      /* Steps: 1 col */
-      .steps { grid-template-columns: 1fr; gap: 28px; }
+      /* Steps: switch to timeline */
+      .steps-desktop { display:none; }
+      .steps-mobile { display:block; }
 
       /* AI section */
       .ai-inner { gap: 32px; }
@@ -401,11 +412,6 @@
     <!-- Values -->
     <div class="values-cards-grid">
       <div style="background:white; border:1.5px solid var(--border); border-radius:var(--radius); padding:24px 20px; border-top:3px solid var(--blue);">
-        <div style="font-size:20px; margin-bottom:10px;">🎯</div>
-        <h4 style="font-size:14px; font-weight:700; margin-bottom:6px;" data-i18n="val.1.title">Ship What Works</h4>
-        <p style="font-size:12px; color:var(--text-sub); line-height:1.55;" data-i18n="val.1.body">We build AI that performs in production, not polished demos. Outcomes over optics, always.</p>
-      </div>
-      <div style="background:white; border:1.5px solid var(--border); border-radius:var(--radius); padding:24px 20px; border-top:3px solid var(--blue);">
         <div style="font-size:20px; margin-bottom:10px;">🤝</div>
         <h4 style="font-size:14px; font-weight:700; margin-bottom:6px;" data-i18n="val.2.title">Client Proximity</h4>
         <p style="font-size:12px; color:var(--text-sub); line-height:1.55;" data-i18n="val.2.body">Our engineers work alongside clients, not at arm's length. Deep understanding beats surface-level specs.</p>
@@ -504,12 +510,14 @@
 <!-- HOW WE WORK -->
 <section id="how">
   <div class="section-inner">
-    <div style="text-align:center; max-width:600px; margin:0 auto;">
+    <div style="text-align:center; max-width:600px; margin:0 auto 52px;">
       <div class="section-label" data-i18n="how.label">Our Process</div>
       <h2 class="section-title" data-i18n="how.title">From idea to intelligent product</h2>
       <p class="section-sub" style="margin:0 auto;" data-i18n="how.sub">A structured, transparent process that keeps you in control from discovery to deployment.</p>
     </div>
-    <div class="steps">
+
+    <!-- Desktop: horizontal steps -->
+    <div class="steps steps-desktop">
       <div class="step">
         <div class="step-num-circle">1</div>
         <div class="step-label" data-i18n="how.1.label">Discover</div>
@@ -535,6 +543,43 @@
         <p data-i18n="how.4.body">Production monitoring, model drift detection, and iterative fine-tuning to keep your AI system accurate and reliable over time.</p>
       </div>
     </div>
+
+    <!-- Mobile: vertical timeline -->
+    <div class="steps-mobile">
+      <div class="timeline-item">
+        <div class="timeline-left"><div class="step-num-circle">1</div><div class="timeline-line"></div></div>
+        <div class="timeline-content">
+          <div class="step-label" data-i18n="how.1.label">Discover</div>
+          <h3 data-i18n="how.1.title">Deep Problem Analysis</h3>
+          <p data-i18n="how.1.body">We map your domain, data landscape, and AI readiness — identifying where LLMs and automation deliver real, measurable ROI.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-left"><div class="step-num-circle">2</div><div class="timeline-line"></div></div>
+        <div class="timeline-content">
+          <div class="step-label" data-i18n="how.2.label">Design</div>
+          <h3 data-i18n="how.2.title">Architecture & Model Selection</h3>
+          <p data-i18n="how.2.body">We recommend the right model stack — proprietary vs. open-source, RAG vs. fine-tuning — with clear tradeoffs, costs, and timelines.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-left"><div class="step-num-circle">3</div><div class="timeline-line"></div></div>
+        <div class="timeline-content">
+          <div class="step-label" data-i18n="how.3.label">Build</div>
+          <h3 data-i18n="how.3.title">Agile AI Development</h3>
+          <p data-i18n="how.3.body">Sprint-based delivery with working demos every two weeks. Prompt engineering, safety evals, and red-teaming built into every cycle.</p>
+        </div>
+      </div>
+      <div class="timeline-item" style="margin-bottom:0;">
+        <div class="timeline-left"><div class="step-num-circle">4</div></div>
+        <div class="timeline-content">
+          <div class="step-label" data-i18n="how.4.label">Scale</div>
+          <h3 data-i18n="how.4.title">MLOps & Continuous Improvement</h3>
+          <p data-i18n="how.4.body">Production monitoring, model drift detection, and iterative fine-tuning to keep your AI system accurate and reliable over time.</p>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
