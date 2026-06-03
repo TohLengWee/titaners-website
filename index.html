@@ -243,18 +243,76 @@
     }
     .lang-toggle:hover { border-color: var(--blue); background: var(--blue-pale); color: var(--blue); }
 
-    /* RESPONSIVE */
+    /* RESPONSIVE — TABLET (≤900px) */
     @media (max-width: 900px) {
-      nav { padding: 0 16px; gap: 12px; flex-wrap: wrap; height: auto; padding-top: 12px; padding-bottom: 12px; }
-      .nav-links { gap: 14px; flex-wrap: wrap; }
+      nav { padding: 0 16px; gap: 10px; flex-wrap: wrap; height: auto; padding-top: 12px; padding-bottom: 12px; }
+      .nav-links { gap: 12px; flex-wrap: wrap; }
       .nav-links a { font-size: 13px; }
       .nav-cta { font-size: 13px; padding: 8px 14px; }
-      .stats-grid, .cv-grid, .practices-grid { grid-template-columns: 1fr 1fr; }
+      .stats-grid { grid-template-columns: repeat(2,1fr); }
+      .cv-grid, .practices-grid { grid-template-columns: 1fr 1fr; }
       .services-grid, .industries-grid { grid-template-columns: 1fr 1fr; }
       .steps { grid-template-columns: 1fr 1fr; }
       .steps::before { display: none; }
       .ai-inner, .about-inner, .vm-grid, .values-intro { grid-template-columns: 1fr; gap: 40px; }
       footer { flex-direction: column; gap: 20px; text-align: center; }
+    }
+
+    /* VALUES GRID */
+    .values-cards-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:16px; margin-top:24px; }
+    @media (max-width:900px) { .values-cards-grid { grid-template-columns:repeat(3,1fr); } }
+    @media (max-width:600px) { .values-cards-grid { grid-template-columns:1fr 1fr; } }
+
+    /* RESPONSIVE — MOBILE (≤600px) */
+    @media (max-width: 600px) {
+      section { padding: 64px 16px; }
+      h1 { font-size: 36px; letter-spacing: -1.5px; }
+      .section-title { font-size: 26px; }
+      .hero-sub { font-size: 15px; }
+
+      /* Nav: logo only, hide links */
+      nav { padding: 0 16px; height: 60px; flex-wrap: nowrap; }
+      .nav-links { display: none; }
+      .lang-toggle { display: none; }
+      .nav-cta { font-size: 13px; padding: 8px 14px; }
+
+      /* Stats: 2 cols */
+      .stats-grid { grid-template-columns: 1fr 1fr; gap: 20px; }
+      .stat-number { font-size: 30px; }
+
+      /* Vision values: 1 col */
+      #vision .section-inner > div:last-child { grid-template-columns: 1fr 1fr !important; }
+
+      /* Services / industries: 1 col */
+      .services-grid, .industries-grid { grid-template-columns: 1fr; }
+
+      /* Steps: 1 col */
+      .steps { grid-template-columns: 1fr; gap: 28px; }
+
+      /* AI section */
+      .ai-inner { gap: 32px; }
+      .ai-terminal { font-size: 11px; }
+
+      /* Practices: 1 col */
+      .practices-grid { grid-template-columns: 1fr; }
+
+      /* Stack chips */
+      .stack-grid { gap: 8px; }
+      .stack-chip { font-size: 12px; padding: 6px 13px; }
+
+      /* About cards: 2 col */
+      #about .section-inner > div:last-child { grid-template-columns: 1fr 1fr !important; }
+
+      /* Contact: stack */
+      #contact > div > div { grid-template-columns: 1fr !important; gap: 32px !important; }
+      #contact iframe { height: 320px !important; }
+
+      /* VM grid */
+      .vm-grid { grid-template-columns: 1fr; }
+
+      /* Footer */
+      footer { flex-direction: column; gap: 16px; text-align: center; padding: 28px 16px; }
+      .footer-links { flex-wrap: wrap; justify-content: center; gap: 16px; }
     }
   </style>
 </head>
@@ -341,7 +399,7 @@
       </div>
     </div>
     <!-- Values -->
-    <div style="margin-top:24px; display:grid; grid-template-columns:repeat(5,1fr); gap:16px;">
+    <div class="values-cards-grid">
       <div style="background:white; border:1.5px solid var(--border); border-radius:var(--radius); padding:24px 20px; border-top:3px solid var(--blue);">
         <div style="font-size:20px; margin-bottom:10px;">🎯</div>
         <h4 style="font-size:14px; font-weight:700; margin-bottom:6px;" data-i18n="val.1.title">Ship What Works</h4>
